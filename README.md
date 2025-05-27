@@ -32,38 +32,47 @@ The project follows a clean, layered architecture with packages organized by res
 ```
 src/
  └── main/
-     ├── java/com/yourname/exchangetracker/
-     │   ├── controller/
-     │   ├── service/
-     │   ├── repository/
-     │   ├── model/
-     │   ├── dto/
-     │   ├── config/
-     │   └── ExchangeRateTrackerApplication.java
+     ├── java/com.example.currencytracker
+     │   │
+     │   ├── controller
+     │   │   └── ExchangeRateController.java
+     │   ├── model
+     │   │   ├── ExchangeRate.java
+     │   │   └── Currency.java (optional)
+     │   ├── repository
+     │   │   └── ExchangeRateRepository.java
+     │   ├── service
+     │   │   └── ExchangeRateService.java
+     │   ├── dto
+     │   │   └── ConversionRequest.java
+     │   │   └── ConversionResponse.java
+     │   │   └── RateHistoryResponse.java
+     │   └── scheduler
+     │       └── ExchangeRateScheduler.java
      └── resources/
          ├── application.yml
          └── ...
 ```
 ## 📌 Key Features to Implement
-### Fetch Exchange Rates from API
-- Use RestTemplate or WebClient
-- Convert the JSON response into Java objects using Jackson
+### Check Current Exchange Rate
+- Call the external API (ExchangeRate-API) to fetch the latest rates.
+- Optionally cache or store the result for performance.
 
 ### Store Exchange Rates
 - Create an ExchangeRate entity (e.g., date, base currency, target currency, rate)
 - Use JpaRepository to persist the data
 
-### Schedule Updates
-- Use @Scheduled(fixedRate = 3600000) to fetch rates hourly/daily
-- Prevent duplicate records (use date & currency as unique keys)
+### View Historical Valuation/Devaluation
+- Store daily exchange rates in a database (via scheduled task).
+- Display trends (e.g., percentage increase/decrease vs. USD over time).
+- Provide a route like /history/USD/BRL?from=2023-01-01&to=2024-01-01.
 
-### Expose REST Endpoints
-- GET /rates → all stored rates
-- GET /rates/{date} → rates for a specific date
-- GET /rates/latest → latest available rates
-- GET /convert?from=USD&to=EUR&amount=100 → conversion endpoint
+### Convert Amount from One Currency to Another
+- Given from, to, and amount, look up the rate and calculate.
+- Optionally allow specifying a date for historical conversion.
 
-### Add Logging
+
+### Add Logging (Optional)
 - Use SLF4J to log:
     - API calls
     - Errors

@@ -1,4 +1,4 @@
-package com.tracker.demo;
+package com.example.currencytracker;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
