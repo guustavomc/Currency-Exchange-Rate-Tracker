@@ -37,8 +37,7 @@ src/
      │   ├── controller
      │   │   └── ExchangeRateController.java
      │   ├── model
-     │   │   ├── ExchangeRate.java
-     │   │   └── Currency.java (optional)
+     │   │   └── ExchangeRate.java
      │   ├── repository
      │   │   └── ExchangeRateRepository.java
      │   ├── service
