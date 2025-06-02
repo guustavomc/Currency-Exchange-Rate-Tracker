@@ -1,8 +1,15 @@
 package com.example.currencytracker.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.time.LocalDate;
 
+@Entity
 public class ExchangeRate {
+
+    @Id
+    private long id;
     private String base;
     private String target;
 
