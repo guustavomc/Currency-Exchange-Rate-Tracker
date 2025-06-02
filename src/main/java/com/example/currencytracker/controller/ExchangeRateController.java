@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/exchange")
-@Validated
 public class ExchangeRateController {
 
     private ExchangeRateService exchangeRateService;
