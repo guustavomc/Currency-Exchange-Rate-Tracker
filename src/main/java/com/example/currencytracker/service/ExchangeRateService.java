@@ -1,6 +1,7 @@
 package com.example.currencytracker.service;
 
 import com.example.currencytracker.dto.ExchangeRateResponse;
+import com.example.currencytracker.exception.ExchangeRateException;
 import com.example.currencytracker.model.ExchangeRate;
 import com.example.currencytracker.repository.ExchangeRateRepository;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -45,17 +46,14 @@ public class ExchangeRateService {
                 }
             }
             else{
-                ExchangeRateResponse errorResponse = new ExchangeRateResponse();
-                errorResponse.setError_message("Error on API:" +responseCode);
-                return errorResponse;
+                throw new ExchangeRateException("Failed to fetch exchange rate. HTTP code: " + responseCode);
+
             }
 
         }
         catch (IOException e){
-            e.printStackTrace();
-            ExchangeRateResponse errorResponse = new ExchangeRateResponse();
-            errorResponse.setError_message(e.getMessage());
-            return errorResponse;
+            throw new ExchangeRateException("Error calling ExchangeRate API: " + e.getMessage());
+
         }
 
 
