@@ -9,6 +9,8 @@ public class ExchangeRateResponse {
     private String target_code;
     private double conversion_rate;
 
+    private double conversion_result;
+
     public String getResult() {
         return result;
     }
@@ -23,6 +25,10 @@ public class ExchangeRateResponse {
 
     public double getConversion_rate() {
         return conversion_rate;
+    }
+
+    public double getConversion_result() {
+        return conversion_result;
     }
 
     public void setResult(String result) {
@@ -41,4 +47,7 @@ public class ExchangeRateResponse {
         this.conversion_rate = conversion_rate;
     }
 
+    public void setConversion_result(double conversion_result) {
+        this.conversion_result = conversion_result;
+    }
 }

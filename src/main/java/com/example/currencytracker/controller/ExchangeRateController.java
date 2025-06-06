@@ -21,4 +21,11 @@ public class ExchangeRateController {
         ExchangeRateResponse response = exchangeRateService.currentExchangeRate(base, target);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/convert")
+    public ResponseEntity<ExchangeRateResponse> getAmountInDifferentCurrency(@RequestParam String base, @RequestParam String target, @RequestParam double value){
+        ExchangeRateResponse response = exchangeRateService.currentExchangeRate(base, target);
+        response.setConversion_result(value*response.getConversion_rate());
+        return ResponseEntity.ok(response);
+    }
 }

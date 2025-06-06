@@ -5,7 +5,7 @@ A RESTful API for managing tasks, built with Spring Boot. This project allows us
 ## ✅ Project Overview
 
 A Spring Boot app that:
-- Fetches real-time and historical currency exchange rates from a public API (like ExchangeRate-API, exchangeratesapi.io, or Frankfurter)
+- Fetches real-time and historical currency exchange rates from a public API (ExchangeRate-API)
 - Stores data in a database
 - Exposes REST endpoints to access the stored rates
 - Runs scheduled tasks to fetch new data regularly
