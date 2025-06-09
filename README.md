@@ -53,9 +53,13 @@ src/
          └── ...
 ```
 ## 📌 Key Features to Implement
-### Check Current Exchange Rate
+### ✅Check Current Exchange Rate
 - Call the external API (ExchangeRate-API) to fetch the latest rates.
 - Optionally cache or store the result for performance.
+
+### ✅Convert Amount from One Currency to Another
+- Given from, to, and amount, look up the rate and calculate.
+- Optionally allow specifying a date for historical conversion.
 
 ### Store Exchange Rates
 - Create an ExchangeRate entity (e.g., date, base currency, target currency, rate)
@@ -65,11 +69,6 @@ src/
 - Store daily exchange rates in a database (via scheduled task).
 - Display trends (e.g., percentage increase/decrease vs. USD over time).
 - Provide a route like /history/USD/BRL?from=2023-01-01&to=2024-01-01.
-
-### Convert Amount from One Currency to Another
-- Given from, to, and amount, look up the rate and calculate.
-- Optionally allow specifying a date for historical conversion.
-
 
 ### Add Logging (Optional)
 - Use SLF4J to log:
